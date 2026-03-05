@@ -15,7 +15,7 @@ for (const file of files) {
 
     const rest = new REST({
         version: "10"
-    }).setToken('MTMzNjkxODgwNDU0NjE5MTM4MA.G7WIcX.zeUat1Nd2oSWe41j15oYgsS477xxlEQw4iut4Q')
+    }).setToken(process.env.DISCORD_TOKEN)
 
     rest.put(Routes.applicationCommands('1336918804546191380'), {
         body
