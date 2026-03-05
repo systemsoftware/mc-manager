@@ -8,15 +8,6 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply();
 
-/*        exec('ps aux | grep "[j]ava.*server.jar"', (error, stdout) => {
-            if (stdout.trim()) {
-                return interaction.editReply({ content: '✅ The Minecraft server is already running!' });
-            }
-        
-            if (stdout.trim()) {
-                return interaction.editReply({ content: '✅ The Minecraft server is already running!' });
-            }
-*/
             const mcServer = spawn('java', ['-Xmx4G', '-Xms4G', '-jar', 'server.jar', 'nogui'], { cwd: './server' });
 
             mcServer.stdout.on('data', (data) => {
@@ -42,6 +33,5 @@ module.exports = {
                 console.error(`Failed to start server: ${err}`);
                 interaction.editReply({ content: `❌ Failed to start the Minecraft server: ${err.message}` });
             });
-      //  });
     },
 };
